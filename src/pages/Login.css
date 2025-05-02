@@ -1,67 +1,142 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+  overflow: hidden; 
+}
+
+.background-logo {
+  position: fixed; /* Fixed to the viewport, not the parent container */
+  top: 50%; /* Center it vertically */
+  left: -45%; /* Pin it to the far left of the screen */
+  transform: translateY(-50%); /* Vertically center it */
+  width: 90vw; /* Responsive width, 50% of the viewport width */
+  height: 100vh; /* Full height of the viewport */
+  opacity: 0.25; /* Set the opacity to make it mildly visible */
+  pointer-events: none;
+  z-index: 0;
+
+  /* Crop the left side of the image to show only the right half */
+  clip-path: inset(0 0 0 40%);
+}
+
+/* Login box */
+.login-box {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  width: 800px;
+  max-width: 95%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Form section */
+.login-left {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Right section (logo/slogan) */
+.login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 500px;
+  margin-bottom: -40px;
+}
+
+.slogan-image {
+  width: 300px;
+  height: auto;
+}
+
+/* Inputs and buttons */
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.sign-in {
+  background-color: #d72638;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.forgot {
+  text-align: right;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-link {
+  all: unset;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.forgot-password {
+  color: #d72638; /* Red by default */
+}
+
+.forgot-password:hover {
+  color: #000; /* Black on hover */
+  text-decoration: none;
+}
+
+.create-account-btn {
+  color: #000000; /* Black by default */
+}
+
+.create-account-btn:hover {
+  color: #d72638; /* Red on hover */
+  text-decoration: none;
+}
+
+
+.sign-in:hover,
+.create-account-btn:hover {
+  opacity: 0.9;
+}
+
+/* Media Query for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .background-logo {
+    left: -75%; /* Adjust logo position to fit better on mobile */
+    width: 150vw; /* Adjust width for mobile, 80% of viewport */
+    height: 100vh; /* Set height to 80% of the viewport height */
+    min-width: 250px;  /* Smaller minimum width for mobile */
+    max-width: 150vw;   /* Adjust maximum width for smaller screens */
+    opacity: 0.35; /* Slightly higher opacity on mobile for better visibility */
   }
-  
-  .login-box {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    padding: 20px;
-    width: 800px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-left {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .login-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login-right img {
-    width: 200px;
-  }
-  
-  input {
-    display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-  }
-  
-  .sign-in {
-    background-color: #d72638;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .forgot {
-    text-align: right;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-  }
-  
-  .create-account {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-  }
-  
+}
