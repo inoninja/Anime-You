@@ -12,7 +12,7 @@ const Login = () => {
 
       <div className="login-box">
         <div className="login-left">
-          <h2>LOGIN</h2>
+          <h2>Burnik</h2>
           <form>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
