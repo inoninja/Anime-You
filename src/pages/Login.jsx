@@ -17,8 +17,8 @@ export default function Login() {
       // Store login status in localStorage (or sessionStorage)
       localStorage.setItem('user', JSON.stringify({ email }));
 
-      // Redirect to homepage after successful login
-      navigate('/');
+      // Redirect to the homepage after successful login
+      navigate('/homepage');  // Navigate to the homepage route
     } else {
       setError('Invalid email or password');
     }
