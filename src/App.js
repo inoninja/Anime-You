@@ -14,8 +14,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/homepage" element={<Homepage />} /> {/* <- Added */}
+          <Route path="/homepage" element={<Homepage />} /> {/* <- Corrected */}
         </Routes>
       </div>
     </Router>
