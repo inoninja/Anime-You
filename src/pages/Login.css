@@ -139,4 +139,42 @@ input {
     max-width: 150vw;   /* Adjust maximum width for smaller screens */
     opacity: 0.35; /* Slightly higher opacity on mobile for better visibility */
   }
+
+
+}
+
+.auth-link {
+  all: unset;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: #d72638; /* Change color on hover */
+}
+
+/* src/pages/Home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.nav-link {
+  margin: 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Add this to your Login.css or a specific CSS file for CreateAccount */
+.error {
+  color: red;
+  font-size: 0.8em;
 }
