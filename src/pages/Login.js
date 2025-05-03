@@ -1,41 +1,56 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = () => {
+export default function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  // Handle login form submission
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Perform login logic here
-    navigate('/home');
+
+    // Check if the email and password are correct (this is just a mockup; you can replace with actual API request)
+    if (email === 'user@example.com' && password === 'password') {
+      // Store login status in localStorage (or sessionStorage)
+      localStorage.setItem('user', JSON.stringify({ email }));
+
+      // Redirect to homepage after successful login
+      navigate('/');
+    } else {
+      setError('Invalid email or password');
+    }
   };
 
   return (
     <div className="login-container">
-      <img src="/assets/anime-logo.png" alt="Side Logo" className="background-logo" />
-      <div className="login-box">
-        <div className="login-left">
-          <h2>LOGIN</h2>
-          <form onSubmit={handleSubmit}>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <div className="forgot">
-              <Link to="/forgot-password" className="auth-link">Forgot Password?</Link>
-            </div>
-            <button type="submit" className="sign-in">SIGN IN</button>
-            <div className="create-account">
-              <Link to="/create-account" className="auth-link">Create Account</Link>
-            </div>
-          </form>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="input-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+          />
         </div>
-        <div className="login-right">
-          <img src="/assets/logo.png" alt="Logo" className="logo-image" />
-          <img src="/assets/anime-slogan.png" alt="Slogan" className="slogan-image" />
+        <div className="input-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+          />
         </div>
-      </div>
+        {error && <p className="error">{error}</p>}
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
-};
-
-export default Login;
+}
