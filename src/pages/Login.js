@@ -18,10 +18,12 @@ const Login = () => {
       <img src="/assets/anime-logo.png" alt="Side Logo" className="background-logo" />
       <div className="login-box">
         <div className="login-left">
+
           <h2>LOGIN</h2>
           <form onSubmit={handleSubmit}>
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />
+
             <div className="forgot">
               <Link to="forgot-password" className="auth-link forgot-password">Forgot Password?</Link>
             </div>
