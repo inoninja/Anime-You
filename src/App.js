@@ -5,7 +5,7 @@ import './App.css';
 import Login from './pages/Login';
 import CreateAccount from './pages/createacc';
 import ForgotPassword from './pages/forgotpassword';
-import Home from './pages/Home'; // Import Home component
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/home" element={<Home />} /> {/* Add Home route */}
+          <Route path="/home" element={<Home />} />
         </Routes>
       </div>
     </Router>
