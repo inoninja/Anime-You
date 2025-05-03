@@ -1,11 +1,10 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
-import CreateAccount from './pages/createacc';
-import ForgotPassword from './pages/forgotpassword';
-import Home from './pages/Home';
+import CreateAccount from './pages/CreateAccount';
+import ForgotPassword from './pages/ForgotPassword';
+import Homepage from './pages/Homepage'; // <- Added
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/homepage" element={<Homepage />} /> {/* <- Added */}
         </Routes>
       </div>
     </Router>
