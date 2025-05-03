@@ -1,56 +1,93 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
+import logoImage from '../assets/logo.png'; // Make sure you have this image in your assets folder
+import sloganImage from '../assets/slogan.png'; // Make sure you have this image in your assets folder
 
-export default function Login() {
-  const navigate = useNavigate();
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // Handle login form submission
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Check if the email and password are correct (this is just a mockup; you can replace with actual API request)
-    if (email === 'user@example.com' && password === 'password') {
-      // Store login status in localStorage (or sessionStorage)
-      localStorage.setItem('user', JSON.stringify({ email }));
-
-      // Redirect to the homepage after successful login
-      navigate('/homepage');  // Navigate to the homepage route
-    } else {
-      setError('Invalid email or password');
+    
+    // Basic validation
+    if (!email || !password) {
+      setError('Email and password are required');
+      return;
     }
+    
+    // Here you would typically call your authentication API
+    // This is just a placeholder - replace with your actual auth logic
+    console.log('Logging in with:', email, password);
+    
+    // For demo purposes, navigate to homepage after "login"
+    navigate('/homepage');
   };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="input-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
+      <div className="background-logo">
+        {/* Add your background logo image here */}
+      </div>
+      
+      <div className="login-box">
+        <div className="login-left">
+          <h2>Sign In</h2>
+          {error && <p className="error">{error}</p>}
+          
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            
+            <div className="forgot">
+              <Link to="/forgot-password" className="auth-link forgot-password">
+                Forgot Password?
+              </Link>
+            </div>
+            
+            <button type="submit" className="sign-in">
+              Sign In
+            </button>
+          </form>
+          
+          <div className="create-account">
+            Don't have an account?{' '}
+            <Link to="/create-account" className="auth-link create-account-btn">
+              Create Account
+            </Link>
+          </div>
+        </div>
+        
+        <div className="login-right">
+          {/* Logo and slogan images */}
+          <img 
+            src={logoImage} 
+            alt="Anime-You Logo" 
+            className="logo-image" 
+          />
+          <img 
+            src={sloganImage} 
+            alt="Discover Your Anime" 
+            className="slogan-image" 
           />
         </div>
-        <div className="input-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-        </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 }
+
+export default Login;
